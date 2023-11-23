@@ -5,7 +5,7 @@ Show notifications on the desktop.
 ## Platforms
 
 * [x] Linux/BSD (requires `glib2`)
-* [ ] Windows _(PR welcome)_
+* [x] Windows (PowerShell)
 * [ ] macOS _(PR welcome)_
 
 ## Installation
@@ -18,7 +18,7 @@ Show notifications on the desktop.
   config = function()
     local notifications = require 'notifications'
     vim.notify = notifications.notify
-    --[[ Default icons:
+    --[[ Default icons (Linux only):
     notifications.icons = {
       TRACE = ' ',
       DEBUG = '󰠭 ',

@@ -7,8 +7,8 @@ vim.tbl_add_reverse_lookup(levels)
 local notify
 if jit.os == 'Linux' or jit.os == 'BSD' then
     notify = require 'notifications.glib2'
-elseif jit.os == 'Windows' then -- TODO: support Windows
-    error('Windows is not currently supported')
+elseif jit.os == 'Windows' then
+    notify = require 'notifications.powershell'
 elseif jit.os == 'OSX' then -- TODO: support macOS
     error('macOS is not currently supported')
 else
@@ -46,7 +46,7 @@ M.notify = function(msg, level, opts)
     ---@cast levels string[]
     local title = opts.title or levels[level]
     if title == 'OFF' then title = '' end
-    notify(icon..title, msg, critical)
+    notify(icon, title, msg, critical)
 end
 
 return M
