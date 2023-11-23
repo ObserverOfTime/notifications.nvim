@@ -3,7 +3,7 @@ local M = {}
 local levels = vim.deepcopy(vim.log.levels)
 vim.tbl_add_reverse_lookup(levels)
 
----@type fun(msg: string, title: string, icon: string, critical: boolean) @type _notify
+--- @type fun(msg: string, title: string, icon: string, critical: boolean)
 local notify
 if jit.os == 'Linux' or jit.os == 'BSD' then
     notify = require 'notifications.glib2'
