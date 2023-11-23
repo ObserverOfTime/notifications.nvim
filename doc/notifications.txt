@@ -17,7 +17,7 @@ Show notifications on the desktop.
 PLATFORMS                         *notifications-notifications.nvim-platforms*
 
 - ☒ Linux/BSD (requires `glib2`)
-- ☐ Windows _(PR welcome)_
+- ☒ Windows (PowerShell)
 - ☐ macOS _(PR welcome)_
 
 
@@ -32,7 +32,7 @@ LAZY.NVIM ~
       config = function()
         local notifications = require 'notifications'
         vim.notify = notifications.notify
-        --[[ Default icons:
+        --[[ Default icons (Linux only):
         notifications.icons = {
           TRACE = ' ',
           DEBUG = '󰠭 ',
