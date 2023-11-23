@@ -30,3 +30,13 @@ Show notifications on the desktop.
   end,
 }
 ```
+
+## Usage
+
+```lua
+vim.notify('Hello world', vim.log.levels.INFO, {
+  icon = '󱇎',
+  title = 'Test',
+  critical = true
+})
+```
