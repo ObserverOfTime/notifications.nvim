@@ -17,12 +17,12 @@ end
 
 ---Log level icons
 M.icons = {
-    TRACE = '',
-    DEBUG = '󰠭',
-    INFO  = '',
-    WARN  = '',
-    ERROR = '',
-    OFF   = '',
+    TRACE = ' ',
+    DEBUG = '󰠭 ',
+    INFO  = ' ',
+    WARN  = ' ',
+    ERROR = ' ',
+    OFF   = ' ',
 }
 
 ---@class Options
@@ -46,7 +46,7 @@ M.notify = function(msg, level, opts)
     ---@cast levels string[]
     local title = opts.title or levels[level]
     if title == 'OFF' then title = '' end
-    notify(('%s %s'):format(icon, title), msg, critical)
+    notify(icon..title, msg, critical)
 end
 
 return M

@@ -4,9 +4,9 @@ Show notifications on the desktop.
 
 ## Platforms
 
-* [x] Linux/BSD: glib2
-* [ ] Windows: PowerShell (PR welcome)
-* [ ] macOS: AppleScript (PR welcome)
+* [x] Linux/BSD (requires `glib2`)
+* [ ] Windows _(PR welcome)_
+* [ ] macOS _(PR welcome)_
 
 ## Installation
 
@@ -20,12 +20,12 @@ Show notifications on the desktop.
     vim.notify = notifications.notify
     --[[ Default icons:
     notifications.icons = {
-      TRACE = '',
-      DEBUG = '󰠭',
-      INFO  = '',
-      WARN  = '',
-      ERROR = '',
-      OFF   = '',
+      TRACE = ' ',
+      DEBUG = '󰠭 ',
+      INFO  = ' ',
+      WARN  = ' ',
+      ERROR = ' ',
+      OFF   = ' ',
     } --]]
   end,
 }
