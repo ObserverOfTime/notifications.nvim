@@ -15,23 +15,45 @@ Show notifications on the desktop.
 ```lua
 {
   'ObserverOfTime/notifications.nvim',
+  opts = {
+      override_notify = true,
+      hist_command = 'Notifications',
+      icons = {
+        TRACE = ' ', -- '🔍 ',
+        DEBUG = '󰠭 ', -- '🐞 ',
+        INFO  = ' ', -- '📣 ',
+        WARN  = ' ', -- '⚠️  ',
+        ERROR = ' ', -- '🚨 ',
+        OFF   = ' ', -- '⛔ ',
+    },
+    hl_groups = {
+      TRACE = 'DiagnosticFloatingHint',
+      DEBUG = 'DiagnosticFloatingHint',
+      INFO = 'DiagnosticFloatingInfo',
+      WARN = 'DiagnosticFloatingWarn',
+      ERROR = 'DiagnosticFloatingError',
+      OFF = 'DiagnosticFloatingOk',
+    }
+  }
+}
+```
+
+### pckr.nvim
+
+```lua
+{
+  'ObserverOfTime/notifications.nvim',
   config = function()
-    local notifications = require 'notifications'
-    vim.notify = notifications.notify
-    --[[ Optionally override the icons:
-    notifications.icons = {
-      TRACE = ' ', -- '🔍 ',
-      DEBUG = '󰠭 ', -- '🐞 ',
-      INFO  = ' ', -- '📣 ',
-      WARN  = ' ', -- '⚠️  ',
-      ERROR = ' ', -- '🚨 ',
-      OFF   = ' ', -- '⛔ ',
-    } --]]
-  end,
+    require('notifications').setup {
+      ...
+    }
+  end
 }
 ```
 
 ## Usage
+
+### Send a notification
 
 ```lua
 vim.notify('Hello world', vim.log.levels.INFO, {
@@ -39,4 +61,10 @@ vim.notify('Hello world', vim.log.levels.INFO, {
   title = 'Test',
   critical = true
 })
+```
+
+### View the history
+
+```vim
+:Notifications
 ```
