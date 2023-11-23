@@ -9,8 +9,8 @@ if jit.os == 'Linux' or jit.os == 'BSD' then
     notify = require 'notifications.glib2'
 elseif jit.os == 'Windows' then
     notify = require 'notifications.powershell'
-elseif jit.os == 'OSX' then -- TODO: support macOS
-    error('macOS is not currently supported')
+elseif jit.os == 'OSX' then
+    notify = require 'notifications.applescript'
 else
     error(('Platform "%s" is not supported'):format(jit.os))
 end

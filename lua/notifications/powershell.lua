@@ -38,9 +38,7 @@ return function(_, title, body, critical)
     -- TODO: use vim.system in 0.10
     vim.loop.spawn('powershell', {
         args = {
-            '-NoProfile',
-            '-Command',
-            -- FIXME: nerdfont icons don't work
+            '-NoProfile', '-Command',
             template:format(title, body, priority)
         }
     })
