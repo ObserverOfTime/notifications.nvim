@@ -4,7 +4,7 @@ Show notifications on the desktop.
 
 ## Platforms
 
-* [x] Linux/BSD: libnotify
+* [x] Linux/BSD: glib2
 * [ ] Windows: PowerShell (PR welcome)
 * [ ] macOS: AppleScript (PR welcome)
 

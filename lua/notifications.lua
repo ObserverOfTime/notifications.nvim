@@ -6,7 +6,7 @@ vim.tbl_add_reverse_lookup(levels)
 ---@type fun(msg: string, title: string, icon: string, critical: boolean) @type _notify
 local notify
 if jit.os == 'Linux' or jit.os == 'BSD' then
-    notify = require 'notifications.libnotify'
+    notify = require 'notifications.glib2'
 elseif jit.os == 'Windows' then -- TODO: support Windows
     error('Windows is not currently supported')
 elseif jit.os == 'OSX' then -- TODO: support macOS
