@@ -3,7 +3,7 @@ local M = {}
 local levels = vim.deepcopy(vim.log.levels)
 vim.tbl_add_reverse_lookup(levels)
 
---- @type fun(msg: string, title: string, icon: string, critical: boolean)
+---@type fun(title: string, body: string, critical: boolean)
 local notify
 if jit.os == 'Linux' or jit.os == 'BSD' then
     notify = require 'notifications.glib2'
@@ -15,7 +15,7 @@ else
     error(('Platform "%s" is not supported'):format(jit.os))
 end
 
---- Log level icons
+---Log level icons
 M.icons = {
     TRACE = '',
     DEBUG = '󰠭',
@@ -25,16 +25,16 @@ M.icons = {
     OFF   = '',
 }
 
---- @class Options
---- @field icon? string
---- @field title? string
---- @field critical? boolean
+---@class Options
+---@field icon? string
+---@field title? string
+---@field critical? boolean
 
---- Show a notification on the desktop
---- @param msg string
---- @param level? integer
---- @param opts? Options
---- @see vim.notify
+---Show a notification on the desktop
+---@param msg string
+---@param level? integer
+---@param opts? Options
+---@see vim.notify
 M.notify = function(msg, level, opts)
     opts = opts or {}
     level = level or levels.OFF
@@ -46,7 +46,7 @@ M.notify = function(msg, level, opts)
     ---@cast levels string[]
     local title = opts.title or levels[level]
     if title == 'OFF' then title = '' end
-    notify(msg, title, icon, critical)
+    notify(('%s %s'):format(icon, title), msg, critical)
 end
 
 return M
