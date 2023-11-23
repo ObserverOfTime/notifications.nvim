@@ -15,15 +15,27 @@ else
     error(('Platform "%s" is not supported'):format(jit.os))
 end
 
----Log level icons
-M.icons = {
-    TRACE = ' ',
-    DEBUG = '󰠭 ',
-    INFO  = ' ',
-    WARN  = ' ',
-    ERROR = ' ',
-    OFF   = ' ',
-}
+if jit.os == 'Linux' or jit.os == 'BSD' then
+    ---Log level icons
+    M.icons = {
+        TRACE = ' ',
+        DEBUG = '󰠭 ',
+        INFO  = ' ',
+        WARN  = ' ',
+        ERROR = ' ',
+        OFF   = ' ',
+    }
+else
+    ---Log level icons
+    M.icons = {
+        TRACE = '🔍 ',
+        DEBUG = '🐞 ',
+        INFO  = '📣 ',
+        WARN  = '⚠️  ',
+        ERROR = '🚨 ',
+        OFF   = '⛔ ',
+    }
+end
 
 ---@class Options
 ---@field icon? string
@@ -46,7 +58,7 @@ M.notify = function(msg, level, opts)
     ---@cast levels string[]
     local title = opts.title or levels[level]
     if title == 'OFF' then title = '' end
-    notify(icon, title, msg, critical)
+    notify(icon..title, msg, critical)
 end
 
 return M

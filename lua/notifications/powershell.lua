@@ -29,11 +29,10 @@ $Toast.Group = "Neovim";
 }]]
 
 ---Show notification using PowerShell
----@param _ string
 ---@param title string
 ---@param body string
 ---@param critical boolean
-return function(_, title, body, critical)
+return function(title, body, critical)
     local priority = critical and 1 or 0
     -- TODO: use vim.system in 0.10
     vim.loop.spawn('powershell', {
