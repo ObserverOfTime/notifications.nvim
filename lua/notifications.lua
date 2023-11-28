@@ -45,19 +45,26 @@ local hl_groups = {
     OFF = 'DiagnosticFloatingOk',
 }
 
+---@param icon string?
+---@param level integer
+local function get_icon(icon, level)
+    if M._icons == false then return '' end
+    return icon or M._icons[levels[level]]
+end
+
 ---Show a notification on the desktop
 ---@param msg string
 ---@param level? integer
 ---@param opts? notifications.NotifyOpts
 ---@see vim.notify
-M.notify = function(msg, level, opts)
+function M.notify(msg, level, opts)
     opts = opts or {}
     level = level or levels.OFF
     local critical = opts.critical
     if critical == nil then
         critical = level == levels.WARN or level == levels.ERROR
     end
-    local icon = opts.icon or M._icons[levels[level]]
+    local icon = get_icon(opts.icon, level)
     ---@cast levels string[]
     local title = opts.title or levels[level]
 
@@ -73,7 +80,8 @@ M.notify = function(msg, level, opts)
     notify(icon..title, msg, critical)
 end
 
-M.show_history = function()
+---Show the notification history in a float
+function M.show_history()
     local ui = vim.api.nvim_list_uis()[1]
     local bufnr = vim.api.nvim_create_buf(false, true)
     vim.api.nvim_open_win(bufnr, false, {
@@ -95,12 +103,14 @@ M.show_history = function()
             ('%s %s%s %s: %s'):format(val.date, val.icon, val.level, val.title, val.body)
         })
         vim.api.nvim_buf_add_highlight(bufnr, M._hl_ns, hl_group, idx - 1, 0, -1)
+        vim.bo[bufnr].buftype = 'nofile'
+        vim.bo[bufnr].modifiable = false
     end
 end
 
----Setup
+---Set up the plugin
 ---@param opts? notifications.SetupOpts
-M.setup = function(opts)
+function M.setup(opts)
     opts = vim.tbl_deep_extend('keep', opts or {}, {
         override_notify = true,
         hist_command = 'Notifications',
@@ -111,7 +121,7 @@ M.setup = function(opts)
         override_notify = {opts.override_notify, 'b'},
         hist_command = {opts.hist_command, 's'},
         hl_groups = {opts.hl_groups, 't'},
-        icons = {opts.icons, 't'}
+        icons = {opts.icons, {'t', 'b'}}
     }
 
     ---@type notifications.Notification[]

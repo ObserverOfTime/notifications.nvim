@@ -24,4 +24,4 @@
 ---@field override_notify boolean Override `vim.notify`
 ---@field hist_command string|nil The name of the history command
 ---@field hl_groups notifications.Levels The log level hl groups
----@field icons notifications.Levels The log level icons
+---@field icons notifications.Levels|false The log level icons

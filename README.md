@@ -26,6 +26,8 @@ Show notifications on the desktop.
         ERROR = ' ', -- '🚨 ',
         OFF   = ' ', -- '⛔ ',
     },
+    -- or to disable all icons:
+    -- icons = false,
     hl_groups = {
       TRACE = 'DiagnosticFloatingHint',
       DEBUG = 'DiagnosticFloatingHint',
