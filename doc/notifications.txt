@@ -55,8 +55,8 @@ LAZY.NVIM ~
       -- to use OSC 777/99/9:
       --[[
       config = function(_, opts)
-        vim.g.nvimcord_use_osc = '777'
-        require('nvimcord').setup(opts)
+        vim.g.notifications_use_osc = '777'
+        require('notifications').setup(opts)
       end
       --]]
     }
@@ -70,7 +70,7 @@ PCKR.NVIM ~
       'ObserverOfTime/notifications.nvim',
       config = function()
         -- to use OSC 777/99/9:
-        -- vim.g.nvimcord_use_osc = '777'
+        -- vim.g.notifications_use_osc = '777'
         require('notifications').setup {
           ...
         }
