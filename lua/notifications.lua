@@ -6,9 +6,9 @@ vim.tbl_add_reverse_lookup(levels)
 
 ---@type fun(title: string, body: string, critical: boolean)
 local notify
-if vim.g.nvimcord_use_osc ~= nil  then
+if vim.g.notifications_use_osc ~= nil  then
     local osc = require 'notifications.osc'
-    notify = osc[tostring(vim.g.nvimcord_use_osc)]
+    notify = osc[tostring(vim.g.notifications_use_osc)]
 elseif jit.os == 'Linux' or jit.os == 'BSD' then
     notify = require 'notifications.glib2'
 elseif jit.os == 'Windows' then

@@ -41,8 +41,8 @@ _The plugin also supports OSC 777, OSC 99, and OSC 9._
   -- to use OSC 777/99/9:
   --[[
   config = function(_, opts)
-    vim.g.nvimcord_use_osc = '777'
-    require('nvimcord').setup(opts)
+    vim.g.notifications_use_osc = '777'
+    require('notifications').setup(opts)
   end
   --]]
 }
@@ -55,7 +55,7 @@ _The plugin also supports OSC 777, OSC 99, and OSC 9._
   'ObserverOfTime/notifications.nvim',
   config = function()
     -- to use OSC 777/99/9:
-    -- vim.g.nvimcord_use_osc = '777'
+    -- vim.g.notifications_use_osc = '777'
     require('notifications').setup {
       ...
     }
