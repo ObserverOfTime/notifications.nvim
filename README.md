@@ -22,12 +22,12 @@ _The plugin also supports OSC 777, OSC 99, and OSC 9._
     hist_command = 'Notifications',
     -- or set `icons = false` to disable all icons
     icons = {
-      TRACE = ' ', -- '🔍 ',
-      DEBUG = '󰠭 ', -- '🐞 ',
-      INFO  = ' ', -- '📣 ',
-      WARN  = ' ', -- '⚠️  ',
-      ERROR = ' ', -- '🚨 ',
-      OFF   = ' ', -- '⛔ ',
+      TRACE = '', -- '🔍',
+      DEBUG = '󰠭', -- '🐞',
+      INFO  = '', -- '📣',
+      WARN  = '', -- '⚠️ ',
+      ERROR = '', -- '🚨',
+      OFF   = '', -- '⛔',
     },
     hl_groups = {
       TRACE = 'DiagnosticFloatingHint',
@@ -38,7 +38,8 @@ _The plugin also supports OSC 777, OSC 99, and OSC 9._
       OFF = 'DiagnosticFloatingOk',
     }
   },
-  --[[ to use OSC 777/99/9:
+  -- to use OSC 777/99/9:
+  --[[
   config = function(_, opts)
     vim.g.nvimcord_use_osc = '777'
     require('nvimcord').setup(opts)

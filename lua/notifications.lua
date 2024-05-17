@@ -22,21 +22,21 @@ end
 local icons
 if jit.os == 'Linux' or jit.os == 'BSD' then
     icons = {
-        TRACE = ' ',
-        DEBUG = '󰠭 ',
-        INFO  = ' ',
-        WARN  = ' ',
-        ERROR = ' ',
-        OFF   = ' ',
+        TRACE = '',
+        DEBUG = '󰠭',
+        INFO  = '',
+        WARN  = '',
+        ERROR = '',
+        OFF   = '',
     }
 else
     icons = {
-        TRACE = '🔍 ',
-        DEBUG = '🐞 ',
-        INFO  = '📣 ',
-        WARN  = '⚠️  ',
-        ERROR = '🚨 ',
-        OFF   = '⛔ ',
+        TRACE = '🔍',
+        DEBUG = '🐞',
+        INFO  = '📣',
+        WARN  = '⚠️ ',
+        ERROR = '🚨',
+        OFF   = '⛔',
     }
 end
 
@@ -53,7 +53,7 @@ local hl_groups = {
 ---@param level integer
 local function get_icon(icon, level)
     if M._icons == false then return '' end
-    return icon or M._icons[levels[level]]
+    return (icon or M._icons[levels[level]])..' '
 end
 
 ---Show a notification on the desktop
