@@ -1,4 +1,4 @@
-*notifications.txt*        For NVIM v0.9.0       Last change: 2023 November 29
+*notifications.txt*          For NVIM v0.9.0          Last change: 2024 May 17
 
 ==============================================================================
 Table of Contents                            *notifications-table-of-contents*
@@ -20,6 +20,8 @@ PLATFORMS                         *notifications-notifications.nvim-platforms*
 - ☒ Windows (PowerShell)
 - ☒ macOS (AppleScript)
 
+_The plugin also supports OSC 777, OSC 99, and OSC 9._
+
 
 INSTALLATION                   *notifications-notifications.nvim-installation*
 
@@ -30,18 +32,17 @@ LAZY.NVIM ~
     {
       'ObserverOfTime/notifications.nvim',
       opts = {
-          override_notify = true,
-          hist_command = 'Notifications',
-          icons = {
-            TRACE = ' ', -- '🔍 ',
-            DEBUG = '󰠭 ', -- '🐞 ',
-            INFO  = ' ', -- '📣 ',
-            WARN  = ' ', -- '⚠️  ',
-            ERROR = ' ', -- '🚨 ',
-            OFF   = ' ', -- '⛔ ',
+        override_notify = true,
+        hist_command = 'Notifications',
+        -- or set `icons = false` to disable all icons
+        icons = {
+          TRACE = '', -- '🔍',
+          DEBUG = '󰠭', -- '🐞',
+          INFO  = '', -- '📣',
+          WARN  = '', -- '⚠️ ',
+          ERROR = '', -- '🚨',
+          OFF   = '', -- '⛔',
         },
-        -- or to disable all icons:
-        -- icons = false,
         hl_groups = {
           TRACE = 'DiagnosticFloatingHint',
           DEBUG = 'DiagnosticFloatingHint',
@@ -50,7 +51,14 @@ LAZY.NVIM ~
           ERROR = 'DiagnosticFloatingError',
           OFF = 'DiagnosticFloatingOk',
         }
-      }
+      },
+      -- to use OSC 777/99/9:
+      --[[
+      config = function(_, opts)
+        vim.g.nvimcord_use_osc = '777'
+        require('nvimcord').setup(opts)
+      end
+      --]]
     }
 <
 
@@ -61,6 +69,8 @@ PCKR.NVIM ~
     {
       'ObserverOfTime/notifications.nvim',
       config = function()
+        -- to use OSC 777/99/9:
+        -- vim.g.nvimcord_use_osc = '777'
         require('notifications').setup {
           ...
         }
