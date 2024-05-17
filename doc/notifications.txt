@@ -1,20 +1,20 @@
-*notifications.txt*          For NVIM v0.9.0          Last change: 2024 May 17
+*notifications.txt*          For NVIM v0.10.0         Last change: 2024 May 17
 
 ==============================================================================
 Table of Contents                            *notifications-table-of-contents*
 
-1. notifications.nvim                       |notifications-notifications.nvim|
-  - Platforms                     |notifications-notifications.nvim-platforms|
-  - Installation               |notifications-notifications.nvim-installation|
-  - Usage                             |notifications-notifications.nvim-usage|
-
-==============================================================================
-1. notifications.nvim                       *notifications-notifications.nvim*
-
+1. Platforms                                         |notifications-platforms|
+2. Installation                                   |notifications-installation|
+  - lazy.nvim                           |notifications-installation-lazy.nvim|
+  - pckr.nvim                           |notifications-installation-pckr.nvim|
+3. Usage                                                 |notifications-usage|
+  - Send a notification              |notifications-usage-send-a-notification|
+  - View the history                    |notifications-usage-view-the-history|
 Show notifications on the desktop.
 
 
-PLATFORMS                         *notifications-notifications.nvim-platforms*
+==============================================================================
+1. Platforms                                         *notifications-platforms*
 
 - ☒ Linux/BSD (glib2)
 - ☒ Windows (PowerShell)
@@ -23,10 +23,11 @@ PLATFORMS                         *notifications-notifications.nvim-platforms*
 _The plugin also supports OSC 777, OSC 99, and OSC 9._
 
 
-INSTALLATION                   *notifications-notifications.nvim-installation*
+==============================================================================
+2. Installation                                   *notifications-installation*
 
 
-LAZY.NVIM ~
+LAZY.NVIM                               *notifications-installation-lazy.nvim*
 
 >lua
     {
@@ -63,7 +64,7 @@ LAZY.NVIM ~
 <
 
 
-PCKR.NVIM ~
+PCKR.NVIM                               *notifications-installation-pckr.nvim*
 
 >lua
     {
@@ -79,10 +80,11 @@ PCKR.NVIM ~
 <
 
 
-USAGE                                 *notifications-notifications.nvim-usage*
+==============================================================================
+3. Usage                                                 *notifications-usage*
 
 
-SEND A NOTIFICATION ~
+SEND A NOTIFICATION                  *notifications-usage-send-a-notification*
 
 >lua
     vim.notify('Hello world', vim.log.levels.INFO, {
@@ -93,7 +95,7 @@ SEND A NOTIFICATION ~
 <
 
 
-VIEW THE HISTORY ~
+VIEW THE HISTORY                        *notifications-usage-view-the-history*
 
 >vim
     :Notifications
