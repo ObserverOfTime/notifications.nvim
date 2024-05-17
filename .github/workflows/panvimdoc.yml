@@ -14,11 +14,12 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
-      - uses: kdheepak/panvimdoc@v4.0.0
+      - uses: kdheepak/panvimdoc@v4.0.1
         with:
           vimdoc: notifications
-          version: NVIM v0.9.0
+          version: NVIM v0.10.0
           treesitter: true
+          shiftheadinglevelby: -1
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: auto generate docs"

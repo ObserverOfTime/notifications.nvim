@@ -34,11 +34,8 @@ $Toast.Group = "Neovim";
 ---@param critical boolean
 return function(title, body, critical)
     local priority = critical and 1 or 0
-    -- TODO: use vim.system in 0.10
-    vim.loop.spawn('powershell', {
-        args = {
-            '-NoProfile', '-Command',
-            template:format(title, body, priority)
-        }
-    }, function() end)
+    vim.system {
+        'powershell', '-NoProfile', '-Command',
+        template:format(title, body, priority)
+    }
 end
