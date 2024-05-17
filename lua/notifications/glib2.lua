@@ -19,5 +19,5 @@ return function(title, body, critical)
                 '"desktop-entry": <string "nvim">'
             ), 'int32 -1'
         }
-    })
+    }, function() end)
 end

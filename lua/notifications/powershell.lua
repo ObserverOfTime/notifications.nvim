@@ -40,5 +40,5 @@ return function(title, body, critical)
             '-NoProfile', '-Command',
             template:format(title, body, priority)
         }
-    })
+    }, function() end)
 end

@@ -10,5 +10,5 @@ return function(title, body)
         args = {
             '-e', template:format(title, body)
         }
-    })
+    }, function() end)
 end

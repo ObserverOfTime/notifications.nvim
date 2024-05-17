@@ -8,6 +8,8 @@ Show notifications on the desktop.
 * [x] Windows (PowerShell)
 * [x] macOS (AppleScript)
 
+_The plugin also supports OSC 777, OSC 99, and OSC 9._
+
 ## Installation
 
 ### lazy.nvim
@@ -16,18 +18,17 @@ Show notifications on the desktop.
 {
   'ObserverOfTime/notifications.nvim',
   opts = {
-      override_notify = true,
-      hist_command = 'Notifications',
-      icons = {
-        TRACE = ' ', -- '🔍 ',
-        DEBUG = '󰠭 ', -- '🐞 ',
-        INFO  = ' ', -- '📣 ',
-        WARN  = ' ', -- '⚠️  ',
-        ERROR = ' ', -- '🚨 ',
-        OFF   = ' ', -- '⛔ ',
+    override_notify = true,
+    hist_command = 'Notifications',
+    -- or set `icons = false` to disable all icons
+    icons = {
+      TRACE = ' ', -- '🔍 ',
+      DEBUG = '󰠭 ', -- '🐞 ',
+      INFO  = ' ', -- '📣 ',
+      WARN  = ' ', -- '⚠️  ',
+      ERROR = ' ', -- '🚨 ',
+      OFF   = ' ', -- '⛔ ',
     },
-    -- or to disable all icons:
-    -- icons = false,
     hl_groups = {
       TRACE = 'DiagnosticFloatingHint',
       DEBUG = 'DiagnosticFloatingHint',
@@ -36,7 +37,13 @@ Show notifications on the desktop.
       ERROR = 'DiagnosticFloatingError',
       OFF = 'DiagnosticFloatingOk',
     }
-  }
+  },
+  --[[ to use OSC 777/99/9:
+  config = function(_, opts)
+    vim.g.nvimcord_use_osc = '777'
+    require('nvimcord').setup(opts)
+  end
+  --]]
 }
 ```
 
@@ -46,6 +53,8 @@ Show notifications on the desktop.
 {
   'ObserverOfTime/notifications.nvim',
   config = function()
+    -- to use OSC 777/99/9:
+    -- vim.g.nvimcord_use_osc = '777'
     require('notifications').setup {
       ...
     }

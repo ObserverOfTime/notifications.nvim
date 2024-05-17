@@ -1,11 +1,15 @@
 local M = {}
 
 local levels = vim.deepcopy(vim.log.levels)
+---@diagnostic disable-next-line: deprecated
 vim.tbl_add_reverse_lookup(levels)
 
 ---@type fun(title: string, body: string, critical: boolean)
 local notify
-if jit.os == 'Linux' or jit.os == 'BSD' then
+if vim.g.nvimcord_use_osc ~= nil  then
+    local osc = require 'notifications.osc'
+    notify = osc[tostring(vim.g.nvimcord_use_osc)]
+elseif jit.os == 'Linux' or jit.os == 'BSD' then
     notify = require 'notifications.glib2'
 elseif jit.os == 'Windows' then
     notify = require 'notifications.powershell'
