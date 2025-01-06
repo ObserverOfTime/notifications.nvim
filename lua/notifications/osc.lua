@@ -14,7 +14,7 @@ local function osc_99(title, body, critical)
     local urgency = critical and 2 or 1
     local message = '\x1b]99;i=1:d=0:u=%d;%s\x1b\\'
     io.stdout:write(message:format(urgency, title))
-    message '\x1b]99;i=1:d=1:p=body:u=%d;%s\x1b\\'
+    message = '\x1b]99;i=1:d=1:p=body:u=%d;%s\x1b\\'
     io.stdout:write(message:format(urgency, body))
 end
 
