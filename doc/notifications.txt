@@ -1,4 +1,4 @@
-*notifications.txt*          For NVIM v0.10.0         Last change: 2024 May 17
+*notifications.txt*        For NVIM v0.10.0       Last change: 2025 January 07
 
 ==============================================================================
 Table of Contents                            *notifications-table-of-contents*
@@ -10,8 +10,6 @@ Table of Contents                            *notifications-table-of-contents*
 3. Usage                                                 |notifications-usage|
   - Send a notification              |notifications-usage-send-a-notification|
   - View the history                    |notifications-usage-view-the-history|
-Show notifications on the desktop.
-
 
 ==============================================================================
 1. Platforms                                         *notifications-platforms*
