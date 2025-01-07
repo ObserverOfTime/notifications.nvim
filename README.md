@@ -1,6 +1,10 @@
+<!-- panvimdoc-ignore-start -->
+
 # notifications.nvim
 
 Show notifications on the desktop.
+
+<!-- panvimdoc-ignore-end -->
 
 ## Platforms
 
@@ -8,7 +12,7 @@ Show notifications on the desktop.
 * [x] Windows (PowerShell)
 * [x] macOS (AppleScript)
 
-_The plugin also supports OSC 777, OSC 99, and OSC 9._
+*The plugin also supports OSC 777, OSC 99, and OSC 9.*
 
 ## Installation
 

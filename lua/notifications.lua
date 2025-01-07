@@ -121,12 +121,10 @@ function M.setup(opts)
         hl_groups = hl_groups,
         icons = icons,
     })
-    vim.validate {
-        override_notify = {opts.override_notify, 'b'},
-        hist_command = {opts.hist_command, 's'},
-        hl_groups = {opts.hl_groups, 't'},
-        icons = {opts.icons, {'t', 'b'}}
-    }
+    vim.validate('override_notify', opts.override_notify, 'boolean')
+    vim.validate('hist_command', opts.hist_command, 'string')
+    vim.validate('hl_groups', opts.hl_groups, 'table')
+    vim.validate('icons', opts.icons, {'table', 'string'})
 
     ---@type notifications.Notification[]
     M._history = {}
