@@ -2,8 +2,9 @@ local M = {}
 
 ---@type table<integer,string>
 local levels = vim.iter(vim.log.levels):fold({}, function(d, k, v)
-	d[v] = k
-	return d
+    d[k] = v
+    d[v] = k
+    return d
 end)
 
 ---@type fun(title: string, body: string, critical: boolean)
