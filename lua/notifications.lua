@@ -1,8 +1,6 @@
 local M = {}
 
-local levels = vim.deepcopy(vim.log.levels)
----@diagnostic disable-next-line: deprecated
-vim.tbl_add_reverse_lookup(levels)
+local levels = vim.iter(vim.log.levels):flatten():totable()
 
 ---@type fun(title: string, body: string, critical: boolean)
 local notify
