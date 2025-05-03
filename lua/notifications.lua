@@ -1,8 +1,11 @@
 local M = {}
 
-local levels = vim.deepcopy(vim.log.levels)
----@diagnostic disable-next-line: deprecated
-vim.tbl_add_reverse_lookup(levels)
+---@type table<integer,string>
+local levels = vim.iter(vim.log.levels):fold({}, function(d, k, v)
+    d[k] = v
+    d[v] = k
+    return d
+end)
 
 ---@type fun(title: string, body: string, critical: boolean)
 local notify
