@@ -13,13 +13,13 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: kdheepak/panvimdoc@v4.0.1
         with:
           vimdoc: notifications
           version: NVIM v0.10.0
           treesitter: true
           shiftheadinglevelby: -1
-      - uses: stefanzweifel/git-auto-commit-action@v5
+      - uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: "chore: auto generate docs"
